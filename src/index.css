@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title {
+  
+}
+
+.input_holder {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.table tr,
+.table td {
+  text-align: center;
+  vertical-align: middle;   
+}
+
+.d-flex {
+  gap: 10px
+}
