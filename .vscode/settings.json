@@ -1,0 +1,10 @@
+{
+    "emmet.syntaxProfiles": {
+
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "prettier.bracketSameLine": true,
+    "prettier.jsxSingleQuote": true
+}
