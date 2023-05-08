@@ -21,8 +21,11 @@ const App = () => {
   };
 
   function handlePostProfile() {
-    if (!age || age <= 0) {
-      setError("Please enter a valid age");
+    const regex = /^([1-9]|[2-9][0-9])$/;
+    if (!age) {
+      setError("Age required");
+    } else if (!regex.test(age)) {
+      setError("Age should range between 1 to 99");
     } else if (!gender) {
       setError("Please select a gender");
     } else if (!address) {
@@ -113,7 +116,11 @@ const App = () => {
 
   return (
     <main>
-      <h1 className='text-center'>Customer Profiles</h1>
+      <div className="m-10 p-5 flex flex-col gap-5 bg-gray-800 text-gray-50 text-center overflow-auto rounded-lg shadow-md">
+        <h1 className='text-4xl font-extrabold dark:text-white'>
+          Customer Profiles
+        </h1>
+      </div>
 
       {/* Add new Data */}
       <CustomerProfiles
@@ -122,17 +129,19 @@ const App = () => {
         onDelete={removeProfile}
       />
 
-      <div className='input_holder container'>
-        <h3 className=''>Add Customer Profile</h3>
+      <div className='m-10 p-10 flex flex-col gap-5 bg-gray-800 text-gray-50 text-center overflow-auto rounded-lg shadow-md'>
+        <h3 className='text-4xl font-extrabold dark:text-white'>
+          Add Customer Profile
+        </h3>
         {/* Error Print */}
         {error && (
-          <div className='error container form-control mb-2 btn-danger'>
+          <div className='p-2 rounded-md bg-rose-600 border-0 outline-none transition-all'>
             {error}
           </div>
         )}
 
         <input
-          className='form-control'
+          className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'
           type='number'
           placeholder='Age'
           value={age}
@@ -140,12 +149,14 @@ const App = () => {
             setAge(e.target.value);
           }}
         />
-        <h1 className='lead'>Gender</h1>
+        <h1 className='text-lg font-normal text-gray-500 dark:text-gray-400'>
+          Gender
+        </h1>
         {/* Gender Selection */}
         <select
           value={gender}
           onChange={handleGenderSelect}
-          className='form-control'>
+          className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
           <option value=''>Select a gender</option>
           <option value='Male'>Male</option>
           <option value='Female'>Female</option>
@@ -153,19 +164,23 @@ const App = () => {
           <option value='Other'>Other</option>
         </select>
         {/* Location Selection */}
-        <h1 className='lead'>Address</h1>
+        <h1 className='text-lg font-normal text-gray-500 dark:text-gray-400'>
+          Address
+        </h1>
 
         <SelectAddress
           onSelectedAddress={setAddress}
           onClearSelection={clearAddress}
         />
 
-        <h1 className='lead'>Employment</h1>
+        <h1 className='text-lg font-normal text-gray-500 dark:text-gray-400'>
+          Employment
+        </h1>
 
         <select
           value={employment}
           onChange={handleEmploymentSelect}
-          className='form-control'>
+          className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
           <option value=''>Select Employment</option>
           <option value='Employed'>Employed</option>
           <option value='Self-employed/Freelance'>
@@ -185,8 +200,9 @@ const App = () => {
           <option value='Not able to work'>Not able to work</option>
           <option value='Other'>Other</option>
         </select>
-        <br />
-        <button className='btn btn-success' onClick={handlePostProfile}>
+        <button
+          className='text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-teal-600 dark:hover:bg-teal-700 focus:outline-none dark:focus:ring-teal-800'
+          onClick={handlePostProfile}>
           Save details
         </button>
       </div>

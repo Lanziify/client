@@ -71,8 +71,12 @@ const SelectAddress = ({ onSelectedAddress, onClearSelection }) => {
   }, [onClearSelection]);
 
   return (
-    <div className='d-flex'>
-      <select onChange={province} onSelect={region} className='form-control'>
+    <div className='flex flex-col gap-5'>
+      <select
+        onChange={province}
+        onSelect={region}
+        className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
+
         <option>Select Region</option>
         {regionData &&
           regionData.length > 0 &&
@@ -82,7 +86,9 @@ const SelectAddress = ({ onSelectedAddress, onClearSelection }) => {
             </option>
           ))}
       </select>
-      <select onChange={city} className='form-control'>
+      <select
+        onChange={city}
+        className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
         <option>Select Province</option>
         {provinceData &&
           provinceData.length > 0 &&
@@ -92,7 +98,9 @@ const SelectAddress = ({ onSelectedAddress, onClearSelection }) => {
             </option>
           ))}
       </select>
-      <select onChange={barangay} className='form-control'>
+      <select
+        onChange={barangay}
+        className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
         <option>Select City /Municipality</option>
         {cityData &&
           cityData.length > 0 &&
@@ -102,7 +110,7 @@ const SelectAddress = ({ onSelectedAddress, onClearSelection }) => {
             </option>
           ))}
       </select>
-      <select onChange={brgy} className='form-control'>
+      <select onChange={brgy} className='p-2 rounded-md bg-gray-700 hover:bg-gray-600 outline-none transition-all'>
         <option>Select Barangay</option>
         {barangayData &&
           barangayData.length > 0 &&
